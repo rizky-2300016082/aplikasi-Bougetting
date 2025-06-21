@@ -2,7 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 // Import halaman login untuk navigasi kembali
-import 'login_page.dart';
 // Import halaman home untuk navigasi setelah daftar berhasil
 import 'home_page.dart';
 
