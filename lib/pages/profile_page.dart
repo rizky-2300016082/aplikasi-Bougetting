@@ -6,9 +6,9 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF4EB7B2), // Background color from BuyPage
+      backgroundColor: const Color(0xFF4EB7B2),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFB3ECEC), // AppBar color from BuyPage
+        backgroundColor: const Color(0xFFB3ECEC),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
@@ -28,7 +28,7 @@ class ProfilePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: IconButton(
-              icon: const Icon(Icons.bar_chart, color: Colors.black, size: 30), // Example icon, adjust as needed
+              icon: const Icon(Icons.bar_chart, color: Colors.black, size: 30),
               onPressed: () {
                 // Handle action for the icon
               },
@@ -46,15 +46,15 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   const CircleAvatar(
                     radius: 40,
-                    backgroundColor: Colors.white, // Background for the avatar
-                    child: Icon(Icons.person, size: 60, color: Color(0xFF4EB7B2)), // Placeholder icon
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.person, size: 60, color: Color(0xFF4EB7B2)),
                   ),
                   const SizedBox(width: 16),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       Text(
-                        'Darwin Nunes', // Placeholder name
+                        'Darwin Nunes',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -62,7 +62,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'darwin@gmail.com', // Placeholder email
+                        'darwin@gmail.com',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.white70,
@@ -73,7 +73,6 @@ class ProfilePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -83,8 +82,8 @@ class ProfilePage extends StatelessWidget {
                         Navigator.pushNamed(context, '/edit_profile');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFB3ECEC), // Button background color
-                        foregroundColor: Colors.black, // Text color
+                        backgroundColor: const Color(0xFFB3ECEC),
+                        foregroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -103,8 +102,8 @@ class ProfilePage extends StatelessWidget {
                         // Handle Bagikan Profil action
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFB3ECEC), // Button background color
-                        foregroundColor: Colors.black, // Text color
+                        backgroundColor: const Color(0xFFB3ECEC),
+                        foregroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -126,39 +125,46 @@ class ProfilePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-
-              _buildInfoCard(
-                title: 'Motivasi',
-                content:
-                    'Wujudkan tujuan finansialmu satu per satu. Belin dirancang untuk mencatat dan memantau progres tabunganmu—apakah itu untuk beli HP baru, liburan, atau impian lainnya.',
+              Center(
+                child: _buildInfoCard(
+                  context,
+                  title: 'Motivasi',
+                  content:
+                      'Wujudkan tujuan finansialmu satu per satu.\nBelin dirancang untuk mencatat dan memantau progres tabunganmu—apakah itu untuk beli HP baru, liburan, atau impian lainnya.',
+                ),
               ),
               const SizedBox(height: 16),
-
-              _buildInfoCard(
-                title: 'Catatan',
-                content:
-                    'Wujudkan tujuan finansialmu satu per satu. Belin dirancang untuk mencatat dan memantau progres tabunganmu—apakah itu untuk beli HP baru, liburan, atau impian lainnya.',
+              Center(
+                child: _buildInfoCard(
+                  context,
+                  title: 'Catatan',
+                  content:
+                      'Catat pengeluaran dan pemasukan harianmu secara teratur.\nDengan catatan yang konsisten, kamu bisa mengambil keputusan finansial yang lebih bijak setiap bulannya.',
+                ),
               ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: const _BottomNavBar(currentIndex: 4), // Menggunakan _BottomNavBar lokal
+      bottomNavigationBar: const _BottomNavBar(currentIndex: 4),
     );
   }
 
-  Widget _buildInfoCard({required String title, required String content}) {
+  Widget _buildInfoCard(BuildContext context,
+      {required String title, required String content}) {
     return Container(
+      width: MediaQuery.of(context).size.width * 0.85, // Responsif
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFB3ECEC), // Card background color
+        color: const Color(0xFFB3ECEC),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start, // Rata kiri
         children: [
           Text(
             title,
+            textAlign: TextAlign.start,
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -168,6 +174,7 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             content,
+            textAlign: TextAlign.start,
             style: const TextStyle(
               fontSize: 14,
               color: Colors.black87,
@@ -179,7 +186,6 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-// _BottomNavBar lokal untuk ProfilePage
 class _BottomNavBar extends StatelessWidget {
   final int currentIndex;
 
@@ -212,7 +218,6 @@ class _BottomNavBar extends StatelessWidget {
             Navigator.pushReplacementNamed(context, '/buy');
             break;
           case 4:
-            // stay
             break;
         }
       },
